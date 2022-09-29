@@ -1,0 +1,7 @@
+% cf
+
+
+### This is a Kalliole's personal cheat sheet.
+
+#Ping command is used to test connection to the target. Verify connection. Ping + target ip address
+ping 00.000.000
