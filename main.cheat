@@ -1,5 +1,8 @@
 % This is a Kalliole's personal sheet.
 
+#update navi repo with Kalliole sheet.
+navi repo add https://github.com/kfdslsope/kalliole
+
 #tldr sample commands + any command with examples. 
 tldr <target>
 
