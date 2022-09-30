@@ -1,4 +1,7 @@
-% This is a Kalliole's personal cheat sheet.
+% This is a Kalliole's personal sheet.
+
+#tldr sample commands + any command with examples. 
+tldr <target>
 
 # Openvpn configuration. HackTheBox. 
 sudo openvpn <target>
