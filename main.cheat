@@ -1,58 +1,143 @@
 % This is a Kalliole's personal cheat sheet.
 
-#Openvpn configuration. HackTheBox. 
+# Openvpn configuration. HackTheBox. 
 sudo openvpn <target>
 
-#Install software default
+# Install software default
 sudo apt-get install <target>
 
-#ifcofig to see vpn or network tunnell 
+# ifcofig to see vpn or network tunnell 
 ifconfig
 
-#Ping command is used to test connection to the target. Verify connection. Ping + target ip address
+# Ping command is used to test connection to the target. Verify connection. Ping + target ip address
 ping <target>
 
+# Command and flag to view all directory files to find $PATH in Kal
+ls -al
 
-#nmap sudo + stealth scan flag with TCP SYN + all ports + service enumeration tag + default scripts tag + target ip addresss
+# check where Path is 
+echo $PATH
+
+# access $PATH file in Kali
+sudo nano ~/.zshrc
+
+#EXAMPLE ONLY. format for $Path to set in .zshrc file at bottom
+export PATH="$PATH:/home/kal.cargo/bin"
+
+#Access /etc/hosts file to map hostname to ip address. Website enumeration. Can be useful if ip address isnot resolving or multiple domains with seperate handing of each name is used)
+sudo nano /etc/hosts
+
+
+#Command used to unzip a gzip file . Example, used on rockyou.txt.gz
+sudo gzip -d <target>
+
+
+# nmap sudo + stealth scan flag with TCP SYN + all ports + service enumeration tag + default scripts tag + target ip addresss
 sudo nmap -sS -p- -sV -sC <target>
 
-#nmap sudo + aggressive tag + all ports + service enumeration tag + default scripts tag + target ip addresss
+# nmap sudo + aggressive tag + all ports + service enumeration tag + default scripts tag + target ip addresss
 sudo nmap -A -p- -sV -sC <target>
 
-#nmap sudo + all ports + service enumeration tag + default scripts tag + target ip addresss
+# nmap sudo + all ports + service enumeration tag + default scripts tag + target ip addresss
 sudo nmap -p- -sV -sC <target>
 
-#nmap sudo + all ports + service enumeration tag + target ip addresss
+# nmap sudo + all ports + service enumeration tag + target ip addresss
 sudo nmap -p- -sV <target>
 
-#Specify ports in Nmap. Nmap specific ports + TCP 22 and 23 + UDP port 111 + service enumeration tag + target ip address
+# Specify ports in Nmap. Nmap specific ports + TCP 22 and 23 + UDP port 111 + service enumeration tag + target ip address
 sudo nmap -p T:22,23,U:111 -sV <target>
 
-#nmap sudo + all ports + service enumeration tag + aggressive tag + target ip address
+# nmap sudo + all ports + service enumeration tag + aggressive tag + target ip address
 sudo nmap -p- -sV -A <target>
 
-#nmap sudo + all ports + service enumeration + output all formats + target ip address
+# nmap sudo + all ports + service enumeration + output all formats + target ip address
 sudo nmap -p- -sV -oXA <target>
 
 
-#ftp connect to machine. ftp + target ip address
+# ftp connect to machine. ftp + target ip address
 ftp <target>
 
-#Connect to machine using win-rm with + ip flag + ip address of actual machine + user flag + user name + password flag + password
-evil-winrm -i <target> -u <target> -p <target>
+# Connect to machine using win-rm with + ip flag + ip address of actual machine + user flag + user name + password flag + password
+evil-winrm -i <target> -u userexample -p passwordexample
 
-#xfreerdp + forwardslash and v and colon and target server ip address
-xfreerdp /v:<target>
+# xfreerdp + /v: server ip address + ignore certiicate command + login as user user flag and Administrator.
+xfreerdp /v:<target> /cert:ignore /u:usernameexample
 
-#xfreeerdp + forwardslash and v and colon and target server ip address + user flag and administrator user. Can replace "Administrator" with another use if want to.
-xfreerdp /v:<target> /u:<target>
+# rdesktop. connect to server using rdesktop with user flag as admin user. Replace "Administrator" with "Guest" or another user if known and wanrt to try. rdesktop command + target server ip address + user flag + Administrator user.
+rdesktop <target> -u usernameexample
 
-#xfreerdp + /v: server ip address + ignore certiicate command + login as user user flag and Administrator.
-xfreerdp /v:<target> /cert:ignore /u:Administrator
+# smbclient connect + list content shares + target ip address
+smbclient -L <target>
+
+# EXAMPLE ONLY. Connect to shares in using smbclient. //00.000.000/sharenameexample smbclient + two forward slashes and target ip address and one forward slash with the ShareName you are trying to connect to.
+smbclient //ipaddress/sharenameexample
+
+# Use smbmap or smbclient to connect to SMB shares from Linux distribution. 
+smbmap
+
+#command line utiliy to interact with Redis. -h flag can be used to interact with host.
+redis-cli
+
+# redis command used to get info in redis. Enumeration.
+info
+
+# redis command used in redis to select a database
+select
+
+# redis command used in redis to obtain all keys in a redis database
+keys *
+
+# EXAMPLE ONLY. mysql command + connect to host and target msql server ip address + login with username (try root)
+mysql -h <target> -u usernamexample
+
+# symbol used to specify within a query that we want to display everything inside a table when connected to msql
+*
+
+# symbol used to end each query when connected to msql
+;
+
+# Show database command when connected to msql
+Show databases;
+
+# Set to use the database named {database_name} when connected to mysql
+USE databasenameexample; 
+
+# Once in a database when connected go mysql, use this command to show the tables inside it.
+Show tables;
+
+# select data to read within a table when connected to mysql within a database and table. 
+SELECT * FROM tablenameexample; 
+
+# clear everything but stay connected when connected to mysql. Useful for going back.
+system clear;
 
 
+# sudo gobuster command + directory flag + specify wordlist flag + wordlist location + target ip address flag + target ip address/domain + look for php,txt,html
+sudo gobuster dir -w /usr/share/wordlists/dirb/common.txt -u <target> -x php,txt,html 
 
-#download file. Download command + filename.fileextensionname
+# fuzzing and directory . Has GUI. 
+dirbuster
+
+# tool to show heads, tech/languages used on page. Similar to wappalzyer. nikto command + domain flag + domain name
+nikto -host <target>
+
+# download file. Download command + filename.fileextensionname
 get <target>
+
+# pulls files. get command to pull file command + filename
+get <target>
+
+# Downloads file. Download file command  + file name
+cat <target>
+
+# Removes files from command line. remove flag command + file name
+rm <target>
+
+#pulls multiople files. mget pull multiple files command + filename
+mget <target>
+
+
+#update ftp
+sudo apt install ftp -y
 
 
