@@ -1,4 +1,8 @@
 % This is a Kalliole's personal cheat sheet.
 
+#
+ifconfig
+
+
 #Ping command is used to test connection to the target. Verify connection. Ping + target ip address
-ping 00.000.000
+ping <00.000.000>
