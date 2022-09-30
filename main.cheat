@@ -1,4 +1,58 @@
 % This is a Kalliole's personal cheat sheet.
 
+#Openvpn configuration. HackTheBox. 
+sudo openvpn <target>
+
+#Install software default
+sudo apt-get install <target>
+
+#ifcofig to see vpn or network tunnell 
+ifconfig
+
 #Ping command is used to test connection to the target. Verify connection. Ping + target ip address
 ping <target>
+
+
+#nmap sudo + stealth scan flag with TCP SYN + all ports + service enumeration tag + default scripts tag + target ip addresss
+sudo nmap -sS -p- -sV -sC <target>
+
+#nmap sudo + aggressive tag + all ports + service enumeration tag + default scripts tag + target ip addresss
+sudo nmap -A -p- -sV -sC <target>
+
+#nmap sudo + all ports + service enumeration tag + default scripts tag + target ip addresss
+sudo nmap -p- -sV -sC <target>
+
+#nmap sudo + all ports + service enumeration tag + target ip addresss
+sudo nmap -p- -sV <target>
+
+#Specify ports in Nmap. Nmap specific ports + TCP 22 and 23 + UDP port 111 + service enumeration tag + target ip address
+sudo nmap -p T:22,23,U:111 -sV <target>
+
+#nmap sudo + all ports + service enumeration tag + aggressive tag + target ip address
+sudo nmap -p- -sV -A <target>
+
+#nmap sudo + all ports + service enumeration + output all formats + target ip address
+sudo nmap -p- -sV -oXA <target>
+
+
+#ftp connect to machine. ftp + target ip address
+ftp <target>
+
+#Connect to machine using win-rm with + ip flag + ip address of actual machine + user flag + user name + password flag + password
+evil-winrm -i <target> -u <target> -p <target>
+
+#xfreerdp + forwardslash and v and colon and target server ip address
+xfreerdp /v:<target>
+
+#xfreeerdp + forwardslash and v and colon and target server ip address + user flag and administrator user. Can replace "Administrator" with another use if want to.
+xfreerdp /v:<target> /u:<target>
+
+#xfreerdp + /v: server ip address + ignore certiicate command + login as user user flag and Administrator.
+xfreerdp /v:<target> /cert:ignore /u:Administrator
+
+
+
+#download file. Download command + filename.fileextensionname
+get <target>
+
+
